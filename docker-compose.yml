@@ -1,0 +1,40 @@
+version: '3.4'
+services:
+  admin.cnja1avwpf1v.us-east-2.rds.amazonaws.com:
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      TZ: America/Sao_Paulo
+      MYSQL_ROOT_PASSWORD: docker123
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: docker123
+      MYSQL_DATABASE: database-1
+    ports:
+      - "3308:3306"
+    networks:
+      - generation-network
+  blogpessoal-api:
+    restart: always
+    build: ./blogpessoal-api
+    working_dir: /blogpessoal-api
+    environment:
+      TZ: America/Sao_Paulo
+      SPRING_BOOT_ENVIRONMENT: Production
+    volumes:
+      - ./blogpessoal-api:/blogpessoal-api
+      - ~/.m2:/root/.m2
+    ports:
+      - "9000:8080"
+    command: mvn clean spring-boot:run
+    links:
+      - admin.cnja1avwpf1v.us-east-2.rds.amazonaws.com
+    depends_on:
+      - admin.cnja1avwpf1v.us-east-2.rds.amazonaws.com
+    networks:
+      - generation-network
+networks:
+    generation-network:
+        driver: bridge
