@@ -9,9 +9,9 @@ services:
     environment:
       TZ: America/Sao_Paulo
       MYSQL_ROOT_PASSWORD: docker1234
-      MYSQL_USER: admim
+      MYSQL_USER: admim2
       MYSQL_PASSWORD: docker1234
-      MYSQL_DATABASE: admim
+      MYSQL_DATABASE: admim2
     ports:
       - "3308:3308"
     networks:
