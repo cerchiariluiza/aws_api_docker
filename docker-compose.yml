@@ -13,7 +13,7 @@ services:
       MYSQL_PASSWORD: docker1234
       MYSQL_DATABASE: admim
     ports:
-      - "3306:3306"
+      - "3308:3308"
     networks:
       - generation-network
   blogpessoal-api:
