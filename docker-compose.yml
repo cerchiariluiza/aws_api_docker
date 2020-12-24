@@ -1,6 +1,6 @@
 version: '3.4'
 services:
-  admin.cnja1avwpf1v.us-east-2.rds.amazonaws.com:
+  admin4.cnja1avwpf1v.us-east-2.rds.amazonaws.com:
     command: mysqld --default-authentication-plugin=mysql_native_password
     restart: always
     build:
@@ -9,9 +9,9 @@ services:
     environment:
       TZ: America/Sao_Paulo
       MYSQL_ROOT_PASSWORD: docker123
-      MYSQL_USER: admin
+      MYSQL_USER: admin4
       MYSQL_PASSWORD: docker123
-      MYSQL_DATABASE: admin
+      MYSQL_DATABASE: admin4
     ports:
       - "3308:3306"
     networks:
@@ -30,9 +30,9 @@ services:
       - "9000:8080"
     command: mvn clean spring-boot:run
     links:
-      - admin.cnja1avwpf1v.us-east-2.rds.amazonaws.com
+      - admin4.cnja1avwpf1v.us-east-2.rds.amazonaws.com
     depends_on:
-      - admin.cnja1avwpf1v.us-east-2.rds.amazonaws.com
+      - admin4.cnja1avwpf1v.us-east-2.rds.amazonaws.com
     networks:
       - generation-network
 networks:
