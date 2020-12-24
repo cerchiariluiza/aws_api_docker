@@ -13,7 +13,7 @@ services:
       MYSQL_PASSWORD: docker123
       MYSQL_DATABASE: admin4
     ports:
-      - "3308:3306"
+      - "3308:3308"
     networks:
       - generation-network
   blogpessoal-api:
