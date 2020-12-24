@@ -11,9 +11,9 @@ services:
       MYSQL_ROOT_PASSWORD: docker123
       MYSQL_USER: admin
       MYSQL_PASSWORD: docker123
-      MYSQL_DATABASE: database
+      MYSQL_DATABASE: database2
     ports:
-      - "3308:3306"
+      - "3306:3306"
     networks:
       - generation-network
   blogpessoal-api:
